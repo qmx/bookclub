@@ -11,7 +11,11 @@ module NavigationHelpers
     when /the homepage/
       '/'
 		when /the add books page/
-			new_book_path		
+			new_book_path
+    when /the books page/
+      books_path
+    when /the book page for/
+      book_path(@book)		
     
     # Add more mappings here.
     # Here is a more fancy example:
