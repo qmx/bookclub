@@ -1,24 +1,24 @@
-<p>
-  <b>User:</b>
-  <%=h @review.user %>
-</p>
+<% title "Review" %>
 
 <p>
-  <b>Book:</b>
-  <%=h @review.book %>
+  <strong>User:</strong>
+  <%=h @review.user_id %>
 </p>
-
 <p>
-  <b>Review:</b>
+  <strong>Book:</strong>
+  <%=h @review.book_id %>
+</p>
+<p>
+  <strong>Review:</strong>
   <%=h @review.review %>
 </p>
-
 <p>
-  <b>Rating:</b>
+  <strong>Rating:</strong>
   <%=h @review.rating %>
 </p>
 
- <% if @current_user.id == @review.user.id %>
-<%= link_to 'Edit', edit_review_path(@review) %> 
- <% end %>
-| <%= link_to 'Back', reviews_path %>
+<p>
+  <%= link_to "Edit", edit_review_path(@review) %> |
+  <%= link_to "Destroy", @review, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", reviews_path %>
+</p>

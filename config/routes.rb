@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :reviews
 
+  map.resources :reviews
+
   map.resources :friendships
 
   map.root :controller => 'books', :action => 'index'

@@ -1,45 +1,54 @@
 require 'test_helper'
 
 class ReviewsControllerTest < ActionController::TestCase
-  test "should get index" do
+  def test_index
     get :index
-    assert_response :success
-    assert_not_nil assigns(:reviews)
+    assert_template 'index'
   end
-
-  test "should get new" do
+  
+  def test_show
+    get :show, :id => Review.first
+    assert_template 'show'
+  end
+  
+  def test_new
     get :new
-    assert_response :success
+    assert_template 'new'
   end
-
-  test "should create review" do
-    assert_difference('Review.count') do
-      post :create, :review => { }
-    end
-
-    assert_redirected_to review_path(assigns(:review))
+  
+  def test_create_invalid
+    Review.any_instance.stubs(:valid?).returns(false)
+    post :create
+    assert_template 'new'
   end
-
-  test "should show review" do
-    get :show, :id => reviews(:one).to_param
-    assert_response :success
+  
+  def test_create_valid
+    Review.any_instance.stubs(:valid?).returns(true)
+    post :create
+    assert_redirected_to review_url(assigns(:review))
   end
-
-  test "should get edit" do
-    get :edit, :id => reviews(:one).to_param
-    assert_response :success
+  
+  def test_edit
+    get :edit, :id => Review.first
+    assert_template 'edit'
   end
-
-  test "should update review" do
-    put :update, :id => reviews(:one).to_param, :review => { }
-    assert_redirected_to review_path(assigns(:review))
+  
+  def test_update_invalid
+    Review.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Review.first
+    assert_template 'edit'
   end
-
-  test "should destroy review" do
-    assert_difference('Review.count', -1) do
-      delete :destroy, :id => reviews(:one).to_param
-    end
-
-    assert_redirected_to reviews_path
+  
+  def test_update_valid
+    Review.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Review.first
+    assert_redirected_to review_url(assigns(:review))
+  end
+  
+  def test_destroy
+    review = Review.first
+    delete :destroy, :id => review
+    assert_redirected_to reviews_url
+    assert !Review.exists?(review.id)
   end
 end
