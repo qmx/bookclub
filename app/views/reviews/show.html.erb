@@ -1,0 +1,24 @@
+<p>
+  <b>User:</b>
+  <%=h @review.user %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%=h @review.book %>
+</p>
+
+<p>
+  <b>Review:</b>
+  <%=h @review.review %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%=h @review.rating %>
+</p>
+
+ <% if @current_user.id == @review.user.id %>
+<%= link_to 'Edit', edit_review_path(@review) %> 
+ <% end %>
+| <%= link_to 'Back', reviews_path %>

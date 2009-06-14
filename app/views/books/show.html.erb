@@ -40,6 +40,7 @@
   <%= link_to "Destroy", @book, :confirm => 'Are you sure?', :method => :delete %> |
     <% end %>
         <% end %>
+  <%= link_to "Review it!", new_review_path({:book_id => @book.id}) %>
   <%= link_to "View All", books_path %> <%= link_to 'Back', :back %>
 </p>
 
