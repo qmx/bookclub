@@ -2,11 +2,11 @@
 
 <p>
   <strong>User:</strong>
-  <%=h @review.user_id %>
+  <%=h @review.user.name %>
 </p>
 <p>
   <strong>Book:</strong>
-  <%=h @review.book_id %>
+  <%=h @review.book.title %>
 </p>
 <p>
   <strong>Review:</strong>
@@ -18,7 +18,11 @@
 </p>
 
 <p>
+  <% if logged_in? %>
+  <% if @review.user.id == @current_user.id %>
   <%= link_to "Edit", edit_review_path(@review) %> |
-  <%= link_to "Destroy", @review, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Destroy", @review, :confirm => 'Are you sure?', :method => :delete %> 
+  <% end %> |
+  <% end %>
   <%= link_to "View All", reviews_path %>
 </p>
