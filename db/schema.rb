@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(:version => 20090618102132) do
   create_table "books", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
+    t.string   "author"
     t.integer  "published_year"
+    t.string   "genre"
     t.string   "isbn"
     t.text     "description"
     t.datetime "created_at"
@@ -53,12 +55,6 @@ ActiveRecord::Schema.define(:version => 20090618102132) do
     t.datetime "updated_at"
   end
 
-  create_table "reviews", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.text     "review"
-    t.integer  "rating"
-
   create_table "genres", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -75,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20090618102132) do
   create_table "readings", :force => true do |t|
     t.integer  "reader_id"
     t.integer  "read_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.text     "review"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
