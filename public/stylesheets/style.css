@@ -1,5 +1,7 @@
 body {
-	background: #DDDDDD;
+	/*background: #DDDDDD;*/
+    /*background-color:#BEDB39;*/
+
 	width: 960px;
 	color: #000000;
 	margin: 0px auto 0px;
@@ -78,7 +80,10 @@ a.button, .button {
   padding: 5px 8px;
   margin: 10px 0;
 }
-
+#error {
+  background-color: red;
+  border: solid 1px #C66;
+}
 #flash_notice {
   background-color: #CFC;
   border: solid 1px #6C6;
@@ -130,9 +135,61 @@ a.button, .button {
   list-style: disc;
 }
 
-.login_logout {
+.sidebar {
     float: right;
     color: #999;
-    font-size: smaller;
+    font-size: 14px;
+}
+
+.tags_genres {
+    float: right;
+    color: green;
+}
+.tags_genres a {
+    color: #004358;
+    text-decoration: none;
+}
+
+.tags_genres a:hover {
+    background: #FF9933;
+}
+
+#nav {
+    float: right;
+    font-family: serif;
+
+}
+
+#books {
+    float: left;
+}
+
+#footer {
+    clear: both;
+    padding: 10px;
+    background: #FD7400;
+    border-bottom: 2px solid #ddd;
+
+}
+
+td {
+    padding: 5px 8px;
+    border: 1px solid #999;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 5px 0 10px;
+}
+#logo {
+    align: right;
+}
+
+th {
+ text-align: left;
+ padding: 5px 8px;
+ border: 1px solid #999;
+ background: #999;
+
 }
 

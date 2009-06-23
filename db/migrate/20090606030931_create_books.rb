@@ -3,9 +3,8 @@ class CreateBooks < ActiveRecord::Migration
     create_table :books do |t|
       t.references :user
       t.string :title
-      t.string :author
+
       t.integer :published_year
-      t.string :genre
       t.string :isbn
       t.text :description
 
@@ -17,3 +16,4 @@ class CreateBooks < ActiveRecord::Migration
     drop_table :books
   end
 end
+

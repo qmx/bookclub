@@ -1,7 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :reviews
 
-  map.resources :reviews
+  map.resources :manuscripts
+
+  map.resources :categories
+
+  map.resources :authors
+
+  map.resources :genres
+
+  map.resources :readings
 
   map.resources :friendships
 

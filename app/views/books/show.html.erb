@@ -6,7 +6,9 @@
 </p>
 <p>
   <strong>Author:</strong>
-  <%=h @book.author %>
+  <% if @authors && !@authors.empty? %>
+  <%= @authors.map {|author| link_to author.name, author}.compact.join(' , ') %>
+  <% end %>
 </p>
 <p>
   <strong>Published Year:</strong>
@@ -14,7 +16,9 @@
 </p>
 <p>
   <strong>Genre:</strong>
-  <%=h @book.genre %>
+  <% if @genres && !@genres.empty? %>
+  <%=h @genres %>
+  <% end %>
 </p>
 <p>
   <strong>Isbn:</strong>
@@ -31,7 +35,11 @@
     <% if @book.user != @current_user && !@current_user.friends.include?(@book.user)%>
   <%= link_to 'Add friend', friendships_path(:friend_id => @book.user_id), :method => :post %>
     <% end %>
-
+</p>
+<p>
+    <% if !@current_user.reads.include?(@book)%>
+  <%= link_to 'I have read it', readings_path(:read_id => @book.id), :method => :post %>
+    <% end %>
 </p>
 <p>
 

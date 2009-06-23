@@ -9,16 +9,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090614140502) do
+ActiveRecord::Schema.define(:version => 20090618102132) do
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.string   "country"
+    t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authors_books", :force => true do |t|
+    t.integer "book_id"
+    t.integer "author_id"
+  end
 
   create_table "books", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "author"
     t.integer  "published_year"
-    t.string   "genre"
     t.string   "isbn"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "books_genres", :force => true do |t|
+    t.integer "genre_id"
+    t.integer "book_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "genre_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +58,23 @@ ActiveRecord::Schema.define(:version => 20090614140502) do
     t.integer  "book_id"
     t.text     "review"
     t.integer  "rating"
+
+  create_table "genres", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "manuscripts", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "readings", :force => true do |t|
+    t.integer  "reader_id"
+    t.integer  "read_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
